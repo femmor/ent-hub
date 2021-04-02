@@ -7,9 +7,9 @@ const Header = () => {
   return (
     <div>
       <span className="header">
-        <img className="logo-img" src={Clapper} alt="Clapper Image" />
+        <img className="logo-img" src={Clapper} alt="" />
         <span>Entertainment Hub</span>
-        <img className="logo-img" src={Video} alt="Video Camera Image"/>
+        <img className="logo-img" src={Video} alt="" />
         </span>
     </div>
   )
