@@ -3,7 +3,7 @@ import React from 'react'
 const TvSeriesScreen = () => {
   return (
     <div>
-      TV Series Screens
+      <span className="pageTitle">TV Series</span>
     </div>
   )
 }

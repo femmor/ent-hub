@@ -3,7 +3,7 @@ import React from 'react'
 const TrendingScreen = () => {
   return (
     <div>
-      Trending Screen
+      <span className="pageTitle">Trending</span>
     </div>
   )
 }

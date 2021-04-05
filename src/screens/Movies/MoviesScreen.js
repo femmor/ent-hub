@@ -3,7 +3,7 @@ import React from 'react'
 const MoviesScreen = () => {
   return (
     <div>
-      Movies Screen
+      <span className="pageTitle">Movies</span>
     </div>
   )
 }
