@@ -6,11 +6,11 @@ import Video from "../../images/video-camera.png"
 const Header = () => {
   return (
     <div>
-      <span className="header">
+      <span className="header" onClick={() => window.scroll(0, 0)}>
         <img className="logo-img" src={Clapper} alt="" />
         <span>Entertainment Hub</span>
         <img className="logo-img" src={Video} alt="" />
-        </span>
+      </span>
     </div>
   )
 }
