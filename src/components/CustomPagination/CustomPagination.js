@@ -15,7 +15,7 @@ const lightTheme = createMuiTheme({
 //   } 
 // })
 
-const CustomPagination = ({ page, setPage, numOfPages = 100 }) => {
+const CustomPagination = ({ setPage, numOfPages = 100 }) => {
 
   const handlePageChange = page => {
     setPage(page)
