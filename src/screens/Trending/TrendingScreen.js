@@ -2,20 +2,22 @@ import React, {useState, useEffect} from 'react'
 import axios from "axios"
 import SingleContent from '../../components/SingleContent/SingleContent'
 import "./TrendingScreen.css";
+import CustomPagination from '../../components/CustomPagination/CustomPagination';
 
 const TrendingScreen = () => {
+  const [page, setPage] = useState(1)
   const [trending, setTrending] = useState([])
 
   const api_key = process.env.REACT_APP_API_KEY
 
   const fetchTrending = async () => {
-    const {data} = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}`)
+    const {data} = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&page=${page}`)
     setTrending(data.results)
   }
 
   useEffect(() => {
   fetchTrending()
-  }, [])
+  }, [page])
 
 
   return (
@@ -40,6 +42,7 @@ const TrendingScreen = () => {
           )
         }
       </div>
+      <CustomPagination className="pagination" page={page} setPage={setPage}/>
     </div>
   )
 }
