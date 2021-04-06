@@ -42,7 +42,7 @@ const TrendingScreen = () => {
           )
         }
       </div>
-      <CustomPagination className="pagination" page={page} setPage={setPage}/>
+      <CustomPagination className="pagination" setPage={setPage}/>
     </div>
   )
 }
