@@ -47,7 +47,7 @@ const MoviesScreen = () => {
               id={item.id}
               title={item.title || item.name} 
               date={item.first_air_date || item.release_date}
-              media_type={item.media_type}
+              media_type='movie'
               poster={item.poster_path}
               vote_average={item.vote_average}
             />

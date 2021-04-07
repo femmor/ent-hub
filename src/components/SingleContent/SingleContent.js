@@ -7,8 +7,6 @@ import './SingleContent.css'
 
 const SingleContent = ({ id, title, date, poster, media_type, vote_average }) => {
 
-  // For dates
-  // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
   return (
     <ContentModal media_type={media_type} id={id} title={title} date={date} poster={poster} vote_average={vote_average}>

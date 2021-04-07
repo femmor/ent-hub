@@ -64,10 +64,10 @@ export default function ContentModal({ children, id, media_type }) {
 
 
   return (
-    <div>
-      <button type="button" className="media" onClick={handleOpen}>
+    <>
+      <div type="button" className="media" onClick={handleOpen}>
         {children}
-      </button>
+      </div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -117,6 +117,6 @@ export default function ContentModal({ children, id, media_type }) {
           }
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }
