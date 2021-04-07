@@ -8,6 +8,7 @@ import { img_500, unavailable, unavailableLandscape } from '../../config/config'
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import { Button } from '@material-ui/core';
 import "./ContentModal.css"
+import Carousel from "../../components/Carousel/Carousel"
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -101,7 +102,9 @@ export default function ContentModal({ children, id, media_type }) {
                     <i className="tagline">{content.tagline}</i>
                   )}
                   <span className="ContentModal__description">{content.overview}</span>
-                  <div></div>
+                  <div>
+                    <Carousel media_type={media_type} id={id}/>
+                  </div>
                   <Button
                     variant="contained"
                     startIcon={<YouTubeIcon />}

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+@import "react-alice-carousel/lib/alice-carousel.css";
+
 
 :root {
   --primary-color: #bb4430;
