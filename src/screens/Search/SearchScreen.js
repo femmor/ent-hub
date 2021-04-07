@@ -1,6 +1,11 @@
 import { Button, createMuiTheme, Tab, Tabs, TextField, ThemeProvider } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import CustomPagination from '../../components/CustomPagination/CustomPagination';
+import SingleContent from '../../components/SingleContent/SingleContent';
+// import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 const lightTheme = createMuiTheme({
   palette: {
@@ -14,7 +19,29 @@ const lightTheme = createMuiTheme({
 const SearchScreen = () => {
   const [page, setPage] = useState(1)
   const [searchText, setSearchText] = useState('')
+  const [content, setContent] = useState('')
+  const [numOfPages, setNumOfPages] = useState()
   const [type, setType] = useState(0)
+  // const [loading, setLoading] = useState(true)
+
+  const api_key = process.env.REACT_APP_API_KEY
+
+  // Get searchTerm
+  const fetchSearch = async () => {
+    try {
+      const {data} = await axios.get(`https://api.themoviedb.org/3/search/${ type ? "tv" : "movie"}?api_key=${api_key}&language=en-US&query=${searchText}&page=${page}&include_adult=false`)
+
+      setContent(data.results)
+      setNumOfPages(data.total_pages)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    window.scroll(0, 0)
+    fetchSearch()
+  }, [type, page])
 
   return (
     <>
@@ -27,7 +54,7 @@ const SearchScreen = () => {
             variant="filled"
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <Button variant="contained" style={{ marginLeft: 10 }}>
+          <Button variant="contained" style={{ marginLeft: 10 }} onClick={fetchSearch}>
             <SearchIcon/>
           </Button>
         </div>
@@ -48,6 +75,23 @@ const SearchScreen = () => {
           </Tabs>
         </div>
       </ThemeProvider>
+
+      <div className="movies">
+        {
+          content && content.map(item => (
+            <SingleContent 
+              key={item.id} 
+              id={item.id}
+              title={item.title || item.name} 
+              date={item.first_air_date || item.release_date}
+              media_type={type ? "tv" : "movie"}
+              poster={item.poster_path}
+              vote_average={item.vote_average}
+            />
+          ))}
+          {searchText && !content && (type ? (<h2>No TV Series found</h2>) : (<h2>No Movies found</h2>))}
+      </div>
+      {numOfPages > 1 && <CustomPagination className="pagination" setPage={setPage} numOfPages={numOfPages}/>}
     </>
   )
 }
