@@ -8,7 +8,7 @@ const Header = () => {
     <div>
       <span className="header" onClick={() => window.scroll(0, 0)}>
         <img className="logo-img" src={Clapper} alt="" />
-        <span>Entertainment Hub</span>
+        <span>lobflix</span>
         <img className="logo-img" src={Video} alt="" />
       </span>
     </div>

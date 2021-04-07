@@ -29,13 +29,16 @@ const Genres = ({ type, setPage, selectedGenres, genres, setGenres, setSelectedG
     setSelectedGenres([...selectedGenres, genre])
     // remove genre from the genres array
     setGenres(genres.filter(g => g.id !== genre.id))
+    // setPage to 1
     setPage(1)
   };
 
   const handleRemove = (genre) => {
     // Remove genre from the selectedGenres array
     setSelectedGenres(selectedGenres.filter(selected => selected.id !== genre.id))
+    // Add genre to the Genres array
     setGenres([...genres, genre])
+    // setPage to 1
     setPage(1)
   };
 
