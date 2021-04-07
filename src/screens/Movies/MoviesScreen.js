@@ -4,6 +4,7 @@ import SingleContent from "../../components/SingleContent/SingleContent"
 import CustomPagination from "../../components/CustomPagination/CustomPagination"
 import "./Movies.css"
 import Genres from '../../components/Genres/Genres'
+import useGenre from '../../hooks/useGenre'
 
 const MoviesScreen = () => {
   const [page, setPage] = useState(1)
@@ -14,8 +15,10 @@ const MoviesScreen = () => {
 
   const api_key = process.env.REACT_APP_API_KEY
 
+  const genreforURL = useGenre(selectedGenres)
+
   const fetchMovies = async () => {
-    const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`)
+    const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`)
 
     setMovie(data.results)
     setNumOfPages(data.total_pages)
@@ -23,7 +26,7 @@ const MoviesScreen = () => {
 
   useEffect(() => {
     fetchMovies()
-  }, [page])
+  }, [page, genreforURL])
 
   return (
     <div>
