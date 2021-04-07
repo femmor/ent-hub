@@ -43,7 +43,7 @@ const Genres = ({ type, setPage, selectedGenres, genres, setGenres, setSelectedG
   };
 
   return (
-    <div style={{ padding: "6px 0" }}>
+    <div style={{ padding: "7px 0"}}>
       {selectedGenres && selectedGenres.map((genre) => (
         <Chip 
           key={genre.id} 
