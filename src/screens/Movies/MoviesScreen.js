@@ -3,11 +3,14 @@ import axios from "axios"
 import SingleContent from "../../components/SingleContent/SingleContent"
 import CustomPagination from "../../components/CustomPagination/CustomPagination"
 import "./Movies.css"
+import Genres from '../../components/Genres/Genres'
 
 const MoviesScreen = () => {
   const [page, setPage] = useState(1)
   const [movie, setMovie] = useState([])
   const [numOfPages, setNumOfPages] = useState()
+  const [selectedGenres, setSelectedGenres] = useState([])
+  const [genres, setGenres] = useState([])
 
   const api_key = process.env.REACT_APP_API_KEY
 
@@ -25,6 +28,14 @@ const MoviesScreen = () => {
   return (
     <div>
       <span className="pageTitle">Movies</span>
+      <Genres
+        type='movie'
+        selectedGenres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        genres={genres}
+        setGenres={setGenres}
+        setPage={setPage}
+      />
       <div className="movies">
         {
           movie ? movie.map(item => (

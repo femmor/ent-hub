@@ -17,6 +17,7 @@ const TrendingScreen = () => {
 
   useEffect(() => {
   fetchTrending()
+  // eslint-disable-next-line 
   }, [page])
 
 
