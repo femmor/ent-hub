@@ -26,7 +26,7 @@ const MoviesScreen = () => {
 
   useEffect(() => {
     fetchMovies()
-  }, [page, genreforURL])
+  })
 
   return (
     <div>

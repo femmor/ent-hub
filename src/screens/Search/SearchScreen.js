@@ -41,7 +41,7 @@ const SearchScreen = () => {
   useEffect(() => {
     window.scroll(0, 0)
     fetchSearch()
-  }, [type, page])
+  })
 
   return (
     <>

@@ -61,7 +61,7 @@ export default function ContentModal({ children, id, media_type }) {
   useEffect(() => {
     fetchDetails()
     fetchVideo()
-  }, [])
+  })
 
 
   return (

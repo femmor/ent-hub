@@ -26,7 +26,7 @@ const TvSeriesScreen = () => {
 
   useEffect(() => {
     fetchSeries()
-  }, [page, genreforURL])
+  })
 
   return (
     <div>
